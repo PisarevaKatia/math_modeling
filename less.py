@@ -41,4 +41,19 @@ a[::,1]=x0+V0x*t
 a[::,2]=y0+V0y*t-((g*t**2)/2)
 print(a)
 """
-from numpy import *
+import numpy as np
+from math import *
+N=int(input())
+M=int(input())
+trigonometry_array=np.zeros([N,M])
+for i in range(N):
+    for j in range(M):
+        trigonometry_array[i,j] = sin(N*i+M*j+1)
+        if trigonometry_array[i,j]<0:
+            trigonometry_array[i,j]=0
+print(trigonometry_array)
+
+a=np.copy(trigonometry_array[::,0])
+trigonometry_array[::,0]=trigonometry_array[::,1] 
+trigonometry_array[::,1]=a
+print (trigonometry_array)
